@@ -1,67 +1,685 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prosupply Internal System</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-header img {
-  height: 400px; /* increase size (you can try 100px if needed) */
-  margin-right: 20px;
-}
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prosupply LLC - Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f15a24",
+              secondary: "#1f2937",
+              gradient: {
+                start: "#667eea",
+                end: "#764ba2",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 0.6s ease-out",
+              "slide-up": "slideUp 0.6s ease-out",
+              float: "float 3s ease-in-out infinite",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .form-input:focus {
+        border-color: #f15a24;
+        box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.1);
+        transform: translateY(-1px);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #f15a24 0%, #e74c3c 100%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(241, 90, 36, 0.3);
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #d14a1a 0%, #c0392b 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(241, 90, 36, 0.4);
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .glass-effect-dark {
+        background: rgba(17, 24, 39, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #f15a24 0%, #e74c3c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 font-sans"
+  >
+    <!-- Header -->
+    <header
+      class="glass-effect dark:glass-effect-dark z-50 border-b border-white/20 dark:border-gray-700/50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-6">
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <img
+                src="img/icon.svg"
+                alt="Prosupply Logo"
+                class="h-14 w-auto"
+              />
+              <div
+                class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-full blur-xl opacity-50"
+              ></div>
+            </div>
+            <div>
+              <!-- <h1 class="text-3xl font-bold gradient-text">Prosupply LLC</h1>
+              <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                Mining Solutions
+              </p> -->
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              id="theme-toggle"
+              class="p-3 rounded-xl glass-effect dark:glass-effect-dark hover:bg-white/20 dark:hover:bg-gray-700/50 transition-all duration-300 group"
+            >
+              <svg
+                id="sun-icon"
+                class="w-6 h-6 text-gray-600 dark:text-gray-400 hidden group-hover:scale-110 transition-transform"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="moon-icon"
+                class="w-6 h-6 text-gray-600 dark:text-gray-400 group-hover:scale-110 transition-transform"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    header img {
-      height: 50px;
-      margin-right: 15px;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: #f15a24; /* Orange brand color */
-      margin: 0;
-    }
-    main {
-      padding: 40px 30px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-    section h2 {
-      color: #f15a24;
-      margin-top: 0;
-    }
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-  </style>
-</head>
-<body>
-<header>
-  <img src="7729f95a-645a-4a0f-b17d-05bd831fd01b.png" alt="Prosupply Logo">
-</header>
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Hero Section -->
+      <section class="text-center mb-16 animate-fade-in">
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight"
+          >
+            Welcome to
+            <span class="gradient-text">Prosupply</span>
+          </h2>
+          <p
+            class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+          >
+            Join the future of mining inventory management. Register now to
+            access our cutting-edge solutions.
+          </p>
+          <div class="flex justify-center">
+            <div
+              class="w-24 h-1 bg-gradient-to-r from-primary to-purple-500 rounded-full"
+            ></div>
+          </div>
+        </div>
+      </section>
 
-  <main>
-    <section>
-      <h2>Phase 1 – Суурь функцууд</h2>
-      <ul>
-        <li><b>Inventory Management:</b> Агуулах бүртгэл, stock notification, stock-in/out бүртгэл</li>
-        <li><b>Sales Team Collaboration:</b> 10 sales reps real-time shared view, reserved items, availability tracking</li>
-        <li><b>Procurement & Re-ordering:</b> Auto purchase suggestions, supplier registry, PO creation</li>
-        <li><b>Reporting:</b> Sales vs inventory, fast vs slow moving products</li>
-      </ul>
-    </section>
-  </main>
-</body>
+      <!-- Company Info Section -->
+      <section class="mb-16 animate-slide-up">
+        <div
+          class="glass-effect dark:glass-effect-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 dark:border-gray-700/50"
+        >
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                About Prosupply LLC
+              </h3>
+              <p
+                class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6"
+              >
+                Prosupply LLC is a leading mining company specializing in
+                comprehensive inventory management systems. We provide
+                cutting-edge solutions for mining operations, ensuring efficient
+                resource management, real-time tracking, and optimized supply
+                chain operations.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <div
+                  class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400"
+                >
+                  <div class="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Real-time tracking</span>
+                </div>
+                <div
+                  class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400"
+                >
+                  <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <span>Smart inventory</span>
+                </div>
+                <div
+                  class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400"
+                >
+                  <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Cost optimization</span>
+                </div>
+              </div>
+            </div>
+            <div class="relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-2xl blur-2xl"
+              ></div>
+              <div
+                class="relative bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-800/80 dark:to-gray-800/40 rounded-2xl p-8 backdrop-blur-sm"
+              >
+                <div class="text-center">
+                  <div
+                    class="w-16 h-16 bg-gradient-to-r from-primary to-purple-500 rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                  >
+                    <svg
+                      class="w-8 h-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h4
+                    class="text-xl font-semibold text-gray-900 dark:text-white mb-2"
+                  >
+                    Advanced Platform
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Streamline operations and improve productivity
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Section -->
+      <section class="animate-slide-up">
+        <div
+          class="glass-effect dark:glass-effect-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 dark:border-gray-700/50"
+        >
+          <div class="text-center mb-12">
+            <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Get Started Today
+            </h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              Complete the form below to register for our services
+            </p>
+          </div>
+
+          <form id="registrationForm" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Company Name -->
+              <div class="group">
+                <label
+                  for="companyName"
+                  class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 group-hover:text-primary transition-colors"
+                >
+                  Company Name *
+                </label>
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    required
+                    class="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm form-input bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-0 transition-all duration-300 backdrop-blur-sm"
+                    placeholder="Enter your company name"
+                  />
+                  <div
+                    class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Your Name -->
+              <div class="group">
+                <label
+                  for="yourName"
+                  class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 group-hover:text-primary transition-colors"
+                >
+                  Your Name *
+                </label>
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="yourName"
+                    name="yourName"
+                    required
+                    class="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm form-input bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-0 transition-all duration-300 backdrop-blur-sm"
+                    placeholder="Enter your full name"
+                  />
+                  <div
+                    class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="group">
+                <label
+                  for="phone"
+                  class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 group-hover:text-primary transition-colors"
+                >
+                  Phone *
+                </label>
+                <div class="relative">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    class="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm form-input bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-0 transition-all duration-300 backdrop-blur-sm"
+                    placeholder="Enter your phone number"
+                  />
+                  <div
+                    class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="group">
+                <label
+                  for="email"
+                  class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 group-hover:text-primary transition-colors"
+                >
+                  Email *
+                </label>
+                <div class="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-6 py-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm form-input bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-0 transition-all duration-300 backdrop-blur-sm"
+                    placeholder="Enter your email address"
+                  />
+                  <div
+                    class="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center pt-8">
+              <button
+                type="submit"
+                id="submitBtn"
+                class="btn-primary text-white font-semibold py-4 px-12 rounded-2xl shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg transition-all duration-300"
+              >
+                <span id="submitText" class="flex items-center space-x-2">
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    ></path>
+                  </svg>
+                  <span>Submit Registration</span>
+                </span>
+                <span
+                  id="loadingText"
+                  class="hidden flex items-center space-x-2"
+                >
+                  <svg
+                    class="animate-spin w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  <span>Submitting...</span>
+                </span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success/Error Messages -->
+          <div id="messageContainer" class="mt-8 hidden">
+            <div
+              id="successMessage"
+              class="hidden p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-2xl backdrop-blur-sm"
+            >
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-green-600 dark:text-green-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p
+                    id="successText"
+                    class="text-sm font-medium text-green-800 dark:text-green-200"
+                  ></p>
+                </div>
+              </div>
+            </div>
+            <div
+              id="errorMessage"
+              class="hidden p-6 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200 dark:border-red-700 rounded-2xl backdrop-blur-sm"
+            >
+              <div class="flex items-center">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-10 h-10 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-red-600 dark:text-red-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p
+                    id="errorText"
+                    class="text-sm font-medium text-red-800 dark:text-red-200"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white mt-24 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-gray-900 via-black to-gray-900"
+      ></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <img
+                src="img/icon.svg"
+                alt="Prosupply Logo"
+                class="h-12 w-auto"
+              />
+              <div
+                class="absolute -inset-2 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-full blur-lg"
+              ></div>
+            </div>
+            <div>
+              <!-- <span class="text-xl font-bold">Prosupply LLC</span>
+              <p class="text-sm text-gray-400">Mining Solutions</p> -->
+            </div>
+          </div>
+
+          <div class="text-center">
+            <p class="text-gray-400 mb-4">
+              Ready to transform your mining operations?
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="mailto:contact@prosupply.mn"
+                class="flex items-center space-x-2 text-gray-300 hover:text-primary transition-colors duration-300 group"
+              >
+                <div
+                  class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                    ></path>
+                    <path
+                      d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>contact@prosupply.mn</span>
+              </a>
+              <br />
+              <a
+                href="tel:99123456"
+                class="flex items-center justify-center md:justify-end space-x-2 text-gray-300 hover:text-primary transition-colors duration-300 group"
+              >
+                <div
+                  class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>99123456</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="text-center md:text-right"></div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+          <p class="text-gray-400 text-sm">
+            © 2024 Prosupply LLC. All rights reserved. | Mining Inventory
+            Management Solutions
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAA4-1R8LJZqgZsccQJAOzGlE1eCJyp1PY",
+        authDomain: "prosupply-8911.firebaseapp.com",
+        projectId: "prosupply-8911",
+        storageBucket: "prosupply-8911.firebasestorage.app",
+        messagingSenderId: "613258940212",
+        appId: "1:613258940212:web:8b5cec289d5f6bc1b01f61",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById("theme-toggle");
+      const sunIcon = document.getElementById("sun-icon");
+      const moonIcon = document.getElementById("moon-icon");
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem("theme") || "light";
+      html.classList.toggle("dark", currentTheme === "dark");
+      updateThemeIcon();
+
+      themeToggle.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        const theme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", theme);
+        updateThemeIcon();
+      });
+
+      function updateThemeIcon() {
+        const isDark = html.classList.contains("dark");
+        sunIcon.classList.toggle("hidden", isDark);
+        moonIcon.classList.toggle("hidden", !isDark);
+      }
+
+      // Form Submission
+      const form = document.getElementById("registrationForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const submitText = document.getElementById("submitText");
+      const loadingText = document.getElementById("loadingText");
+      const messageContainer = document.getElementById("messageContainer");
+      const successMessage = document.getElementById("successMessage");
+      const errorMessage = document.getElementById("errorMessage");
+      const successText = document.getElementById("successText");
+      const errorText = document.getElementById("errorText");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add("hidden");
+        loadingText.classList.remove("hidden");
+        hideMessages();
+
+        try {
+          // Get form data
+          const formData = new FormData(form);
+          const data = {
+            companyName: formData.get("companyName"),
+            yourName: formData.get("yourName"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            timestamp: serverTimestamp(),
+          };
+
+          // Save to Firestore
+          const docRef = await addDoc(collection(db, "coregist"), data);
+
+          // Show success message
+          showSuccessMessage(
+            "Registration submitted successfully! Your data has been saved."
+          );
+
+          // Reset form
+          form.reset();
+        } catch (error) {
+          console.error("Error submitting form:", error);
+          showErrorMessage("Failed to submit registration. Please try again.");
+        } finally {
+          // Reset button state
+          submitBtn.disabled = false;
+          submitText.classList.remove("hidden");
+          loadingText.classList.add("hidden");
+        }
+      });
+
+      function showSuccessMessage(message) {
+        successText.textContent = message;
+        messageContainer.classList.remove("hidden");
+        successMessage.classList.remove("hidden");
+        errorMessage.classList.add("hidden");
+      }
+
+      function showErrorMessage(message) {
+        errorText.textContent = message;
+        messageContainer.classList.remove("hidden");
+        errorMessage.classList.remove("hidden");
+        successMessage.classList.add("hidden");
+      }
+
+      function hideMessages() {
+        messageContainer.classList.add("hidden");
+        successMessage.classList.add("hidden");
+        errorMessage.classList.add("hidden");
+      }
+    </script>
+  </body>
 </html>
